@@ -1,0 +1,43 @@
+.student-card {
+  background: #1b1b28;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 0 1px rgba(44, 15, 159, 0.04);
+}
+
+.student-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.student-status {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* estados */
+.status-AL_DIA {
+  color: #4caf50;
+}
+
+.status-VENCIDO {
+  color: #ff5252;
+}
+
+.status-SIN_PAGO {
+  color: #ffb300;
+}
+
+.student-actions button {
+  padding: 8px 12px;
+  font-size: 14px;
+}

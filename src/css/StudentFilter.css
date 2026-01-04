@@ -1,0 +1,36 @@
+.filters {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 6px;
+  justify-content: center;
+}
+
+.filters .btn-filter {
+  padding: 10px 14px;
+  border-radius: 20px;
+  background-color: #2a2f3a;
+  color: #eaeaea;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filters .btn-filter:hover {
+  background-color: #3a3f4b;
+}
+
+.btn-add-student {
+  position: fixed;
+  bottom: 90px; /* arriba del bottom-nav */
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #6c6cff;
+  color: white;
+  font-size: 32px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,.3);
+  cursor: pointer;
+}

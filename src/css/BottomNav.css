@@ -1,0 +1,30 @@
+.bottom-nav-container {
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-nav {
+ display: flex;
+ justify-content: center;
+ bottom: 0;
+ width: 100%;
+ position: fixed;
+ border-top: 1px solid #2a2a3d;
+ background: linear-gradient(180deg, #0f0f14, #15151f);
+ z-index: 99;
+}
+
+.nav-item {
+ margin: 30px;
+ cursor: pointer;
+ text-decoration: none;
+ color: #fff;
+ font-size: 16px;
+}
+
+.nav-item.active {
+ color: #9f9fff;
+ font-weight: bold;
+ text-shadow: 0 0 10px rgba(160, 160, 255, 0.6);
+}
+
