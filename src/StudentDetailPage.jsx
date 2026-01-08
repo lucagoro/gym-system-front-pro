@@ -50,6 +50,7 @@ export default function StudentDetailPage() {
         return <p>Cargando alumno...</p>;
     
     return (
+        <div className="page-container">
         <div className="student-detail">
             <div className="student-header">
                 <button className="back-btn" onClick={() => navigate(-1)}>
@@ -125,6 +126,7 @@ export default function StudentDetailPage() {
                         onClose={() => setToast(null)}
                     />
                  )}
+        </div>
         </div>
 
     )
