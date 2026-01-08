@@ -38,7 +38,7 @@ export default function StudentDetailPage() {
         deleteStudent(id).then(() => {
             setToast("Alumno eliminado con éxito");
             setShowDelete(false);
-            setTimeout(() => navigate("/"), 2000);
+            setTimeout(() => navigate("/"), 1000);
         })
         .catch(() => {
             setToast("Error al eliminar el alumno");

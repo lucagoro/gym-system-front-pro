@@ -11,7 +11,7 @@ export default function AddStudentPage() {
   function handleSubmit(data) {
     createStudent(data).then(() => {
         setToast("Alumno registrado con éxito"); // Mostrar mensaje de éxito
-        setTimeout(() => navigate("/students"), 2000);
+        setTimeout(() => navigate("/students"), 1000);
     })
     .catch(() => {
         setToast("Error al registrar el alumno"); // Mostrar mensaje de error

@@ -17,7 +17,7 @@ export default function EditStudentPage() {
   function handleSubmit(data) {
     updateStudent(id, data).then(() => {
         setToast("Alumno actualizado con éxito");
-        setTimeout(() => navigate(`/students/${id}`), 2000);
+        setTimeout(() => navigate(`/students/${id}`), 1000);
     })
     .catch(() => {
         setToast("Error al actualizar el alumno");
