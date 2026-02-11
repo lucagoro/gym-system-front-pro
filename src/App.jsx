@@ -1,29 +1,57 @@
-import './App.css'
-import StudentsPage from './StudentsPage'
-import StudentDetailPage from "./StudentDetailPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from './components/Dashboard';
-import Header from "./components/Header";
-import BottomNav from './components/BottomNav';
-import AddStudentPage from './AddStudentPage';
-import EditStudentPage from './EditStudentPage';
-
-
-
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import LoginPage from './pages/LoginPage';
+import MainLayout from './components/MainLayout';
+import StudentsPage from './pages/StudentsPage';
+import Dashboard from './pages/Dashboard';
+import FinancePage from './pages/FinancePage';
+import PlansPage from './pages/PlansPage';
+import PaymentPage from './pages/PaymentPage';
+import { useState, useEffect } from 'react';
 
 function App() {
+
+  // Usamos un estado para el rol. Se inicializa con lo que haya en el storage.
+  const [role, setRole] = useState(localStorage.getItem('role'));
+
+  // Este efecto es para que, si el localStorage cambia, el componente se entere
+  // (Opcional, pero ayuda en algunos casos)
+  useEffect(() => {
+    const currentRole = localStorage.getItem('role');
+    setRole(currentRole);
+  }, []);
+
+  const isAdmin = role === 'ADMIN' || role === 'ROLE_ADMIN';
+
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/students" element={<StudentsPage />} />
-        <Route path="/students/:id" element={<StudentDetailPage />} />
-        <Route path="/students/add" element={<AddStudentPage />} />
-        <Route path="/students/:id/edit" element={<EditStudentPage />} />
+        <Route path="/login" element={<LoginPage />} />
+
+        <Route element={<MainLayout />}>
+          {/* Ahora las rutas dependen de la variable 'role' del estado */}
+          <Route 
+            path="/dashboard" 
+            element={isAdmin ? <Dashboard /> : <Navigate to="/students" replace />} 
+          />
+          
+          <Route path="/students" element={<StudentsPage />} />
+          
+          <Route 
+            path="/finances" 
+            element={isAdmin ? <FinancePage /> : <Navigate to="/students" replace />} 
+          />
+
+          <Route 
+            path="/plans" element={<PlansPage />} />
+        </Route>
+
+        <Route path="*" element={<Navigate to={isAdmin ? "/dashboard" : "/students"} replace />} />
       </Routes>
-      <BottomNav/>
-    </BrowserRouter>
+      <ToastContainer position="bottom-right" theme="dark" />
+    </Router>
   );
 }
 
-export default App
+export default App;
