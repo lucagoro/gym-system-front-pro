@@ -13,11 +13,12 @@ const Sidebar = () => {
     const userName = localStorage.getItem('username');
 
     const isAdmin = userRole === 'ADMIN' || userRole === 'ROLE_ADMIN';
+    const isGuest = userRole === 'GUEST' || userRole === 'ROLE_GUEST';
 
     const menuItems = [
-        ...(isAdmin ? [{ path: '/', label: 'Dashboard', icon: LayoutDashboard }] : []),
+        ...(isAdmin || isGuest ? [{ path: '/', label: 'Dashboard', icon: LayoutDashboard }] : []),
         { icon: Users, label: 'Alumnos', path: '/students' },
-        ...(isAdmin ? [{ icon: DollarSign, label: 'Finanzas', path: '/finances' }] : []),
+        ...(isAdmin || isGuest ? [{ icon: DollarSign, label: 'Finanzas', path: '/finances' }] : []),
         { icon: Settings, label: 'Planes', path: '/plans' },
     ];
 

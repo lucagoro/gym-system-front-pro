@@ -7,7 +7,7 @@ const api = axios.create({
 
 // Interceptor para meter el token en cada petición
 api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
@@ -23,7 +23,7 @@ api.interceptors.response.use(
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
             console.warn("Sesión inválida o expirada. Redirigiendo al login...");
             
-            localStorage.removeItem('token'); 
+            sessionStorage.removeItem('token'); 
             // Podés limpiar otros estados de usuario aquí si tenés
             
             window.location.href = '/login';

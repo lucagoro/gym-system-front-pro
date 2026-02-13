@@ -7,7 +7,6 @@ import StudentsPage from './pages/StudentsPage';
 import Dashboard from './pages/Dashboard';
 import FinancePage from './pages/FinancePage';
 import PlansPage from './pages/PlansPage';
-import PaymentPage from './pages/PaymentPage';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -23,6 +22,7 @@ function App() {
   }, []);
 
   const isAdmin = role === 'ADMIN' || role === 'ROLE_ADMIN';
+  const isGuest = role === 'GUEST' || role === 'ROLE_GUEST';
 
   return (
     <Router>
@@ -33,21 +33,21 @@ function App() {
           {/* Ahora las rutas dependen de la variable 'role' del estado */}
           <Route 
             path="/dashboard" 
-            element={isAdmin ? <Dashboard /> : <Navigate to="/students" replace />} 
+            element={isAdmin || isGuest ? <Dashboard /> : <Navigate to="/students" replace />} 
           />
           
           <Route path="/students" element={<StudentsPage />} />
           
           <Route 
             path="/finances" 
-            element={isAdmin ? <FinancePage /> : <Navigate to="/students" replace />} 
+            element={isAdmin || isGuest ? <FinancePage /> : <Navigate to="/students" replace />} 
           />
 
           <Route 
             path="/plans" element={<PlansPage />} />
         </Route>
 
-        <Route path="*" element={<Navigate to={isAdmin ? "/dashboard" : "/students"} replace />} />
+        <Route path="*" element={<Navigate to={isAdmin || isGuest ? "/dashboard" : "/students"} replace />} />
       </Routes>
       <ToastContainer position="bottom-right" theme="dark" />
     </Router>
