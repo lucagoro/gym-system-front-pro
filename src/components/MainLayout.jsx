@@ -2,7 +2,7 @@ import { Outlet, Navigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
 const MainLayout = () => {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
     // Si no hay token, lo mandamos al login (Ruta Protegida)
     if (!token) {

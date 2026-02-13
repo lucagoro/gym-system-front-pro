@@ -8,9 +8,9 @@ const Sidebar = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Recuperamos la info del LocalStorage
-    const userRole = localStorage.getItem('role');
-    const userName = localStorage.getItem('username');
+    // Recuperamos la info del sessionStorage
+    const userRole = sessionStorage.getItem('role');
+    const userName = sessionStorage.getItem('username');
 
     const isAdmin = userRole === 'ADMIN' || userRole === 'ROLE_ADMIN';
     const isGuest = userRole === 'GUEST' || userRole === 'ROLE_GUEST';

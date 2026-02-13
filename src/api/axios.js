@@ -22,11 +22,11 @@ api.interceptors.response.use(
         // Si el servidor responde con 401 o 403
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
             console.warn("Sesión inválida o expirada. Redirigiendo al login...");
-            
+
             sessionStorage.removeItem('token'); 
-            // Podés limpiar otros estados de usuario aquí si tenés
-            
-            window.location.href = '/login';
+            sessionStorage.removeItem('role');
+            sessionStorage.removeItem('username');
+            // window.location.href = '/login';
         }
         
         return Promise.reject(error);
