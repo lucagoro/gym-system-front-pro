@@ -1,16 +1,19 @@
-# React + Vite
+Plataforma Integral de Gestión
+Sistema integral para la administración de gimnasios. Permite gestionar socios, controlar pagos, planes y visualizar estadísticas financieras.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  ## 🔑 Acceso de Prueba
+  Para probar la aplicación sin necesidad de crear una cuenta:
+- **Invitado:** `guestUser` / `guest1414` (Solo lectura)
 
-Currently, two official plugins are available:
+  ## 🛠️ Stack Tecnológico
+- **Frontend:** React, Tailwind CSS, Axios, Lucide Icons.
+- **Backend:** https://github.com/lucagoro/gym-system-back-pro.git - (Java, Spring Boot, Spring Security, JWT).
+- **Base de Datos:** PostgreSQL vía Supabase.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   ## 🚀 Características
+- **Autenticación Segura:** Manejo de sesiones con JWT y sessionStorage.
+- **Roles de Usuario:** Protección de rutas basada en roles (Admin/Guest).
+- **Dashboard:** Métricas en tiempo real de ingresos y socios activos.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  ## Link al Sistema
+  https://gym-system-front-pro.vercel.app
