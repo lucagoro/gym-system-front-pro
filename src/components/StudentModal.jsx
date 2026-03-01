@@ -1,4 +1,4 @@
-import { X, User, IdCard, Mail, Phone, Calendar } from 'lucide-react';
+import { X, User, IdCard, Phone, Calendar, CalendarFold, MapPin } from 'lucide-react';
 
 const StudentModal = ({ isOpen, onClose, onSubmit, formData, setFormData, loading, editingStudent }) => {
     if (!isOpen) return null;
@@ -22,11 +22,11 @@ const StudentModal = ({ isOpen, onClose, onSubmit, formData, setFormData, loadin
                 </button>
             </div>
 
-            {/* Formulario - Mantenemos space-y-4 y p-6 */}
+            {/* Formulario */}
             <form onSubmit={onSubmit} className="p-6 space-y-4">
                 <div className="grid grid-cols-1 gap-4">
                     
-                    {/* Nombre Completo - Ocupa todo el ancho siempre */}
+                    {/* Nombre Completo */}
                     <div>
                         <label className="text-sm font-medium text-slate-400 mb-1.5 block ml-1">Nombre Completo</label>
                         <div className="relative">
@@ -41,7 +41,7 @@ const StudentModal = ({ isOpen, onClose, onSubmit, formData, setFormData, loadin
                         </div>
                     </div>
 
-                    {/* DNI y Teléfono - En Tablet/PC van juntos (grid-cols-2), en Celu uno abajo del otro */}
+                    {/* DNI y Teléfono */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label className="text-sm font-medium text-slate-400 mb-1.5 block ml-1">DNI</label>
@@ -62,11 +62,49 @@ const StudentModal = ({ isOpen, onClose, onSubmit, formData, setFormData, loadin
                             <div className="relative">
                                 <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                                 <input 
-                                    type="text"
+                                    type="text" required
                                     className="w-full bg-slate-800 border border-slate-700 p-3 pl-10 rounded-xl text-white outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
                                     placeholder="11 2233-4455"
                                     value={formData.phone}
                                     onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Edad y Dirección */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label className="text-sm font-medium text-slate-400 mb-1.5 block ml-1">Dirección</label>
+                            <div className="relative">
+                                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                                <input 
+                                    type="text"
+                                    className="w-full bg-slate-800 border border-slate-700 p-3 pl-10 rounded-xl text-white outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                                    placeholder="Av. Ituzaingo 1234"
+                                    value={formData.address ?? ''} 
+                                    onChange={(e) => setFormData({...formData, address: e.target.value})}
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="text-sm font-medium text-slate-400 mb-1.5 block ml-1">Edad</label>
+                            <div className="relative">
+                                <CalendarFold className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
+                                <input 
+                                    type="number"
+                                    className="w-full bg-slate-800 border border-slate-700 p-3 pl-10 rounded-xl text-white outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                                    placeholder="18"
+                                    value={formData.age ?? ''} 
+                                    onChange={(e) => {
+                                        const val = e.target.value;
+                                        // Si borra todo, guardamos '', si escribe, convertimos a entero
+                                        setFormData({
+                                            ...formData, 
+                                            age: val === '' ? '' : parseInt(val, 10)
+                                        });
+                                    }}
                                 />
                             </div>
                         </div>

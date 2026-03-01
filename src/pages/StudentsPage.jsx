@@ -15,7 +15,7 @@ const StudentsPage = () => {
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalLoading, setModalLoading] = useState(false);
-    const [formData, setFormData] = useState({ name: '', phone: '', dni: '', status: 'SIN_PAGOS' });
+    const [formData, setFormData] = useState({ name: '', address: '', age: '', phone: '', dni: '', status: 'SIN_PAGOS' });
     const [editingStudent, setEditingStudent] = useState(null);
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const [studentToDelete, setStudentToDelete] = useState(null);
@@ -86,7 +86,7 @@ const StudentsPage = () => {
     const closeModal = () => {
         setIsModalOpen(false);
         setEditingStudent(null);
-        setFormData({ name: '', phone: '', dni: '', status: 'SIN_PAGOS' });
+        setFormData({ name: '', address: '', age: '', phone: '', dni: '', status: 'SIN_PAGOS' });
     }
 
     // Esta función solo abre el modal
@@ -114,9 +114,11 @@ const StudentsPage = () => {
     const handleEditClick = (student) => {
         setEditingStudent(student);
         setFormData({ 
-            name: student.name,  
-            phone: student.phone,
-            dni: student.dni,
+            name: student.name || '',  
+            address: student.address || '',
+            age: student.age || '',
+            phone: student.phone || '',
+            dni: student.dni || '',
             status: student.status
         });
         setIsModalOpen(true);
@@ -154,7 +156,7 @@ const StudentsPage = () => {
 
     const openNewStudentModal = () => {
         setEditingStudent(null);
-        setFormData({ name: '', phone: '', dni: '', status: 'SIN_PAGOS' });
+        setFormData({ name: '', address: '', age: '', phone: '', dni: '', status: 'SIN_PAGOS' });
         setIsModalOpen(true);
     };
 
@@ -338,7 +340,7 @@ const StudentsPage = () => {
         )}
 
         {/* Mantenemos tus modales igual */}
-        <StudentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleSaveStudent} formData={formData} setFormData={setFormData} loading={modalLoading} />
+        <StudentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={handleSaveStudent} formData={formData} setFormData={setFormData} loading={modalLoading} editingStudent={editingStudent} />
         <ConfirmModal isOpen={isConfirmOpen} onClose={() => setIsConfirmOpen(false)} onConfirm={confirmDelete} loading={deleteLoading} title="¿Eliminar alumno?" message="Esta acción no se puede deshacer." />
         <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setIsPaymentModalOpen(false)} student={selectedStudent} onSuccess={fetchStudents} />
         <PaymentHistoryModal isOpen={isHistoryOpen} onClose={() => setIsHistoryOpen(false)} student={selectedStudent} />

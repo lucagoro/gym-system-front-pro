@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
     // Usa la variable de entorno, y si no existe (local), usa localhost
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8080',
+    baseURL: 'http://localhost:8080' || import.meta.env.VITE_API_URL,
 });
 
 // Interceptor para meter el token en cada petición
