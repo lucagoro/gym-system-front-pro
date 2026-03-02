@@ -56,7 +56,7 @@ const Sidebar = () => {
             `}>
                 <div className="p-6 pl-18 md:pl-6 flex items-center gap-3">
                     <Dumbbell className="text-indigo-500 h-8 w-8" />
-                    <span className="text-xl font-bold text-white">IronCity</span>
+                    <span className="text-xl font-bold text-white">GymHub</span>
                 </div>
 
                 <nav className="flex-1 px-4 space-y-2 mt-4">

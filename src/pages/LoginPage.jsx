@@ -54,7 +54,7 @@ const LoginPage = () => {
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-white mb-2">
-                    Iron City <span className="text-indigo-500">Gym</span>
+                    Gym <span className="text-indigo-500">Hub</span>
                 </h2>
                 <p className="text-center text-slate-400 mb-8 text-sm sm:text-base">
                     Ingresá al panel de control
